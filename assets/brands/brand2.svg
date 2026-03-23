@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="120" viewBox="0 0 300 120">
+  <defs>
+    <linearGradient id="brand2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="120" fill="#f8fafc" rx="16"/>
+  <rect x="0" y="0" width="300" height="120" fill="url(#brand2Grad)" rx="16" opacity="0.08"/>
+  <rect x="40" y="36" width="48" height="48" rx="10" fill="url(#brand2Grad)"/>
+  <path d="M50 60 L64 46 L78 60 L64 74 Z" fill="white" opacity="0.95"/>
+  <text x="110" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="800" fill="#1e293b">DataFlow</text>
+  <text x="110" y="92" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b">数据智能平台</text>
+</svg>

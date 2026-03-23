@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="120" viewBox="0 0 300 120">
+  <defs>
+    <linearGradient id="brand3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="120" fill="#f8fafc" rx="16"/>
+  <rect x="0" y="0" width="300" height="120" fill="url(#brand3Grad)" rx="16" opacity="0.08"/>
+  <circle cx="64" cy="60" r="30" fill="url(#brand3Grad)"/>
+  <path d="M52 60 Q64 44 76 60 Q64 76 52 60" fill="white" opacity="0.95"/>
+  <text x="115" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="800" fill="#1e293b">CloudAI</text>
+  <text x="115" y="92" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b">云计算与AI服务</text>
+</svg>

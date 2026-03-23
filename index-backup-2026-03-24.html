@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奥呦 Logic | AI时代的首席认知官</title>
+    <meta name="description" content="奥呦 Logic - AI时代的首席认知官。专注GEO生成引擎优化，让品牌成为AI脑海中的首选答案">
+    <meta name="keywords" content="GEO,AI营销,生成引擎优化,品牌优化,ChatGPT,Claude,SEO,AI搜索">
+    <meta name="author" content="奥呦 Logic">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="奥呦 Logic | AI时代的首席认知官">
+    <meta property="og:description" content="专注GEO生成引擎优化，让品牌成为AI脑海中的首选答案">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                        display: ['Space Grotesk', 'Noto Sans SC', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',  /* 主色 - 青绿色 */
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        accent: {
+                            cyan: '#06b6d4',     /* 青色 */
+                            blue: '#3b82f6',     /* 蓝色 */
+                            teal: '#14b8a6',     /* 青绿 */
+                            orange: '#f97316',   /* CTA橙色 */
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'twinkle': 'twinkle 3s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        twinkle: {
+                            '0%, 100%': { opacity: '0.3' },
+                            '50%': { opacity: '1' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(20, 184, 166, 0.5)' },
+                            '100%': { boxShadow: '0 0 40px rgba(20, 184, 166, 0.8), 0 0 60px rgba(6, 182, 212, 0.4)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* 渐变文字 - 蓝绿渐变 */
+        .gradient-text {
+            background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+        }
+        
+        .gradient-bg-animated {
+            background: linear-gradient(-45deg, #14b8a6, #06b6d4, #3b82f6, #14b8a6);
+            background-size: 400% 400%;
+            animation: gradient 8s ease infinite;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Glass card subtle shine effect */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.06),
+                transparent
+            );
+            transition: left 0.6s;
+            pointer-events: none;
+        }
+        
+        .glass-card:hover::before {
+            left: 100%;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(20, 184, 166, 0.3);
+            box-shadow: 0 8px 32px rgba(20, 184, 166, 0.15);
+        }
+        
+        .hero-bg {
+            background: radial-gradient(ellipse at top, #0d3d3a 0%, #0a0a1a 40%, #000000 100%);
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        
+        .nav-scrolled {
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.5);
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .btn-secondary {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .glow-purple {
+            box-shadow: 0 0 60px rgba(20, 184, 166, 0.3);
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 40px rgba(20, 184, 166, 0.5);
+        }
+        
+        .text-glow-animated {
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 20px rgba(20, 184, 166, 0.5), 0 0 40px rgba(20, 184, 166, 0.3); }
+            100% { text-shadow: 0 0 40px rgba(20, 184, 166, 0.8), 0 0 80px rgba(6, 182, 212, 0.5), 0 0 120px rgba(59, 130, 246, 0.3); }
+        }
+        
+        .neon-border {
+            position: relative;
+        }
+        
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #14b8a6, #06b6d4, #3b82f6, #14b8a6);
+            background-size: 400% 400%;
+            border-radius: inherit;
+            z-index: -1;
+            animation: gradient 3s ease infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .neon-border:hover::before {
+            opacity: 1;
+        }
+        
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-3d:hover {
+            transform: perspective(1000px) rotateX(8deg) rotateY(-8deg) translateZ(30px);
+        }
+        
+        .magnetic-btn {
+            transition: transform 0.2s;
+        }
+        
+        .gradient-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        .floating-orbs {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0a0a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #0d9488;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #14b8a6;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.15), transparent);
+            margin: 0;
+        }
+        
+        /* Typewriter Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #8b5cf6;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #8b5cf6 }
+        }
+        
+        /* Mouse Trail */
+        .mouse-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.8), transparent);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+        
+        /* Parallax Layers */
+        .parallax-layer {
+            will-change: transform;
+        }
+        
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            animation: glitch-1 0.3s infinite linear alternate-reverse;
+            color: #14b8a6;
+            z-index: -1;
+        }
+        
+        .glitch::after {
+            animation: glitch-2 0.3s infinite linear alternate-reverse;
+            color: #06b6d4;
+            z-index: -2;
+        }
+        
+        @keyframes glitch-1 {
+            0%, 100% { clip-path: inset(0 0 95% 0); transform: translate(-2px, -2px); }
+            20% { clip-path: inset(30% 0 60% 0); transform: translate(2px, 2px); }
+            40% { clip-path: inset(60% 0 30% 0); transform: translate(-2px, 2px); }
+            60% { clip-path: inset(80% 0 10% 0); transform: translate(2px, -2px); }
+            80% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 2px); }
+        }
+        
+        @keyframes glitch-2 {
+            0%, 100% { clip-path: inset(95% 0 0 0); transform: translate(2px, 2px); }
+            20% { clip-path: inset(60% 0 30% 0); transform: translate(-2px, -2px); }
+            40% { clip-path: inset(30% 0 60% 0); transform: translate(2px, -2px); }
+            60% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 2px); }
+            80% { clip-path: inset(80% 0 10% 0); transform: translate(2px, -2px); }
+        }
+        
+        /* Holographic Card */
+        .holographic {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .holographic::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(20, 184, 166, 0.1) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+        
+        .holographic:hover::before {
+            animation: holographic-sweep 0.8s ease-in-out;
+            opacity: 1;
+        }
+        
+        @keyframes holographic-sweep {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        /* Pulse Ring */
+        .pulse-ring {
+            position: relative;
+        }
+        
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4);
+            z-index: -1;
+            opacity: 0;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.1); opacity: 0; }
+        }
+        
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #14b8a6, #06b6d4, #3b82f6);
+            z-index: 9999;
+            transition: width 0.1s;
+        }
+        
+        /* Liquid Button */
+        .liquid-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .liquid-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .liquid-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Floating Animation */
+        .float-animation {
+            animation: float-y 3s ease-in-out infinite;
+        }
+        
+        @keyframes float-y {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* RGB Border */
+        .rgb-border {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+        }
+        
+        .w-18 { width: 4.5rem; height: 4.5rem; }
+        
+        .rgb-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6, #06b6d4, #8b5cf6);
+            background-size: 300% 100%;
+            animation: rgb-shift 3s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes rgb-shift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .glass-card {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+            
+            .card-3d:hover {
+                transform: none;
+            }
+            
+            .glass-card::before {
+                display: none;
+            }
+            
+            .holographic::before,
+            .pulse-ring::before {
+                display: none;
+            }
+            
+            .floating-orbs {
+                display: none;
+            }
+            
+            .mouse-trail {
+                display: none;
+            }
+            
+            .star {
+                display: none;
+            }
+            
+            /* Reduce animation complexity on mobile */
+            * {
+                animation-duration: 0.5s !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+        
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .card-3d,
+            .glass-card,
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-primary-900 text-white font-sans antialiased overflow-x-hidden">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-primary-900 z-[9999] flex items-center justify-center transition-opacity duration-500">
+        <div class="text-center">
+            <div class="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin mb-4"></div>
+            <p class="text-gray-400 text-sm">加载中...</p>
+        </div>
+    </div>
+    
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading-screen').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loading-screen').style.display = 'none';
+                }, 500);
+            }, 300);
+        });
+    </script>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+    
+    <!-- Mouse Trail Container (disabled for cleaner look) -->
+    <!-- <div id="mouse-trail-container"></div> -->
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="flex items-center">
+                    <img src="assets/logo-nav.png" alt="奥呦 Logic" class="h-14 w-auto">
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#home" class="text-gray-200 hover:text-white transition-colors font-medium">首页</a>
+                    <a href="#services" class="text-gray-200 hover:text-white transition-colors font-medium">服务</a>
+                    <a href="#methodology" class="text-gray-200 hover:text-white transition-colors font-medium">方法论</a>
+                    <a href="#cases" class="text-gray-200 hover:text-white transition-colors font-medium">案例</a>
+                    <a href="#about" class="text-gray-200 hover:text-white transition-colors font-medium">关于我们</a>
+                    <a href="#contact" class="text-gray-200 hover:text-white transition-colors font-medium">联系我们</a>
+                    <a href="#contact" class="px-6 py-2.5 btn-primary rounded-lg text-white font-medium transition-all">
+                        立即咨询
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a1a]/95 backdrop-blur-lg">
+            <div class="px-4 py-4 space-y-4">
+                <a href="#home" class="block text-gray-300 hover:text-white">首页</a>
+                <a href="#services" class="block text-gray-300 hover:text-white">服务</a>
+                <a href="#methodology" class="block text-gray-300 hover:text-white">方法论</a>
+                <a href="#cases" class="block text-gray-300 hover:text-white">案例</a>
+                <a href="#about" class="block text-gray-300 hover:text-white">关于我们</a>
+                <a href="#contact" class="block text-gray-300 hover:text-white">联系我们</a>
+                <a href="#contact" class="block px-6 py-2 btn-primary rounded-lg text-white text-center">立即咨询</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden">
+        <!-- Particle Canvas -->
+        <canvas id="particle-canvas" class="absolute inset-0 w-full h-full"></canvas>
+        
+        <!-- Stars Background -->
+        <div class="absolute inset-0 overflow-hidden" id="stars-container">
+            <!-- Stars will be generated by JS -->
+        </div>
+        
+        <!-- Gradient Orbs -->
+        <div class="floating-orbs w-[500px] h-[500px] bg-primary-500/20 top-1/4 left-1/4" style="animation-delay: 0s;"></div>
+        <div class="floating-orbs w-[400px] h-[400px] bg-accent-blue/20 bottom-1/4 right-1/4" style="animation-delay: -3s;"></div>
+        <div class="floating-orbs w-[300px] h-[300px] bg-accent-cyan/15 top-1/2 right-1/3" style="animation-delay: -6s;"></div>
+        
+        <!-- Grid Lines -->
+        <div class="absolute inset-0 opacity-[0.03]">
+            <div class="absolute inset-0" style="background-image: linear-gradient(rgba(20, 184, 166, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(20, 184, 166, 0.3) 1px, transparent 1px); background-size: 100px 100px;"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <!-- Tag -->
+                <div class="inline-flex items-center px-5 py-2.5 rounded-full glass-effect mb-8 neon-border">
+                    <span class="w-2.5 h-2.5 bg-gradient-to-r from-primary-500 to-accent-cyan rounded-full mr-3 animate-pulse"></span>
+                    <span class="text-sm text-gray-300">AI时代的首席认知官</span>
+                </div>
+                
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+                    <span class="block text-white">让每一个提问，</span>
+                    <span class="block">都给出您的<span class="gradient-text text-glow text-glow-animated">品牌答案</span></span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-6">
+                    奥呦 Logic — AI时代的首席认知官
+                </p>
+                <p class="text-gray-400 max-w-xl mx-auto mb-12">
+                    营销敏捷度 × PB级AI技术，让品牌成为AI脑海中的首选答案
+                </p>
+                
+                <!-- CTA Buttons - Simplified -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#contact" class="px-8 py-4 btn-primary rounded-lg text-white font-semibold text-lg transition-all hover:scale-105">
+                        获取免费诊断
+                    </a>
+                </div>
+            </div>
+        </div>
+                    <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
+                        <div class="w-1.5 h-3 bg-primary-500 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Logos Section -->
+    <section class="py-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0d1f1e] to-[#0a0a1a]"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4">
+            <p class="text-center text-gray-500 text-sm mb-8">受到众多领先企业的信赖</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                <img src="assets/brands/brand1.svg" alt="品牌客户" class="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity">
+                <img src="assets/brands/brand2.svg" alt="品牌客户" class="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity">
+                <img src="assets/brands/brand3.svg" alt="品牌客户" class="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity">
+                <img src="assets/brands/brand4.svg" alt="品牌客户" class="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity">
+                <img src="assets/brands/brand5.svg" alt="品牌客户" class="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0d1f1e]/50 to-[#0a0a1a]"></div>
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12" data-aos="fade-up">
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold gradient-text counter" data-target="10.8">0</div>
+                    <div class="text-gray-400 mt-3 text-lg">亿美元市场规模</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold gradient-text counter" data-target="80.9">0</div>
+                    <div class="text-gray-400 mt-3 text-lg">% AI引用品牌内容</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold gradient-text counter" data-target="51">0</div>
+                    <div class="text-gray-400 mt-3 text-lg">% B2B决策者使用AI</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-bold gradient-text">3.5+</div>
+                    <div class="text-gray-400 mt-3 text-lg">年AI营销经验</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-28 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0a1a19] to-[#0a0a1a]"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">核心服务</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">全方位的 GEO 生成引擎优化解决方案，助力品牌在 AI 时代获得更多曝光</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
+                <!-- Service 1 -->
+                <div class="glass-card card-3d rounded-2xl p-8 hover:bg-white/5 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="search" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">GEO 基础优化</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Schema 结构化数据优化、实体关系构建、权威信源布局，让您的内容被 AI 精准理解和引用</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 mr-3 flex-shrink-0"></i>Schema 标记优化</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 mr-3 flex-shrink-0"></i>知识图谱构建</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 mr-3 flex-shrink-0"></i>实体关系梳理</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="glass-card card-3d rounded-2xl p-8 hover:bg-white/5 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="file-text" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">AI 内容策略</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">基于 AI 语义理解的内容规划，创建符合生成引擎偏好的高质量内容，提升被引用概率</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 mr-3 flex-shrink-0"></i>语义内容优化</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 mr-3 flex-shrink-0"></i>问答式内容布局</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 mr-3 flex-shrink-0"></i>权威信源建设</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="glass-card card-3d rounded-2xl p-8 hover:bg-white/5 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="bar-chart-3" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">数据监测分析</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">7×24 小时 AI 可见性监测，实时追踪品牌在各 AI 平台中的曝光情况和引用表现</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 mr-3 flex-shrink-0"></i>多平台监测</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 mr-3 flex-shrink-0"></i>引用数据分析</li>
+                        <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 mr-3 flex-shrink-0"></i>ROI 效果追踪</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Methodology Section -->
+    <section id="methodology" class="py-28 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0d1f1e]/30 to-[#0a0a1a]"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">DSS GEO 方法论</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">科学系统的生成引擎优化框架，帮助品牌建立持久的 AI 认知优势</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- D - Depth -->
+                <div class="glass-card card-3d rounded-2xl p-8 text-center hover:scale-105 transition-transform" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-18 h-18 mx-auto gradient-bg rounded-full flex items-center justify-center mb-5 text-3xl font-bold">D</div>
+                    <h3 class="text-xl font-bold mb-2">Semantic Depth</h3>
+                    <p class="text-primary-400 text-sm mb-3 font-medium">语义深度</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">构建深度语义关联，让 AI 理解品牌核心价值</p>
+                </div>
+                
+                <!-- S - Data -->
+                <div class="glass-card card-3d rounded-2xl p-8 text-center hover:scale-105 transition-transform" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-18 h-18 mx-auto gradient-bg rounded-full flex items-center justify-center mb-5 text-3xl font-bold">S</div>
+                    <h3 class="text-xl font-bold mb-2">Data Support</h3>
+                    <p class="text-primary-400 text-sm mb-3 font-medium">数据支撑</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">结构化数据标记，提供 AI 可解析的精准信息</p>
+                </div>
+                
+                <!-- S - Source -->
+                <div class="glass-card card-3d rounded-2xl p-8 text-center hover:scale-105 transition-transform" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-18 h-18 mx-auto gradient-bg rounded-full flex items-center justify-center mb-5 text-3xl font-bold">S</div>
+                    <h3 class="text-xl font-bold mb-2">Authoritative Source</h3>
+                    <p class="text-primary-400 text-sm mb-3 font-medium">权威信源</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">建立权威引用源，提升 AI 信任度和引用率</p>
+                </div>
+                
+                <!-- S - Schema -->
+                <div class="glass-card rounded-2xl p-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 mx-auto gradient-bg rounded-full flex items-center justify-center mb-4 text-2xl font-bold">S</div>
+                    <h3 class="text-lg font-bold mb-1">Schema Markup</h3>
+                    <p class="text-primary-400 text-sm mb-2">结构化标记</p>
+                    <p class="text-gray-500 text-sm">Schema.org 标准标记，优化机器可读性</p>
+                </div>
+            </div>
+            
+            <!-- Process Flow -->
+            <div class="mt-16 glass-card rounded-2xl p-8" data-aos="fade-up">
+                <h3 class="text-2xl font-bold text-center mb-8">优化流程</h3>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center font-bold">1</div>
+                        <span class="text-gray-300">现状诊断</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-6 h-6 text-gray-600"></i>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center font-bold">2</div>
+                        <span class="text-gray-300">策略规划</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-6 h-6 text-gray-600"></i>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center font-bold">3</div>
+                        <span class="text-gray-300">内容优化</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-6 h-6 text-gray-600"></i>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center font-bold">4</div>
+                        <span class="text-gray-300">监测迭代</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Cases Section -->
+    <section id="cases" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0a1514] to-[#0a0a1a]"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">成功案例</h2>
+                <p class="text-xl text-gray-400">看看我们如何帮助客户成功</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Case 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/case1.svg" alt="案例1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">某头部科技公司</h3>
+                        <p class="text-gray-400 text-sm mb-4">AI 搜索可见性提升 300%</p>
+                        <div class="flex items-center text-primary-400 text-sm">
+                            <span>查看详情</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/case2.svg" alt="案例2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">某上市电商平台</h3>
+                        <p class="text-gray-400 text-sm mb-4">品牌引用率提升 150%</p>
+                        <div class="flex items-center text-primary-400 text-sm">
+                            <span>查看详情</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Case 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <img src="assets/case3.svg" alt="案例3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">某头部金融机构</h3>
+                        <p class="text-gray-400 text-sm mb-4">权威信源覆盖率 95%</p>
+                        <div class="flex items-center text-primary-400 text-sm">
+                            <span>查看详情</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0d1f1e]/20 to-[#0a0a1a]"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">关于奥呦 Logic</h2>
+                    <p class="text-xl text-gray-400 mb-6">
+                        奥呦 Logic 是国内领先的 GEO (Generative Engine Optimization) 服务提供商。
+                    </p>
+                    <p class="text-gray-500 mb-6">
+                        我们深耕 AI 营销领域 3.5 年以上，专注于帮助企业在 ChatGPT、Claude、Perplexity 等生成式 AI 平台中建立品牌权威，获取精准流量。
+                    </p>
+                    <p class="text-gray-500 mb-8">
+                        团队拥有丰富的 AI 技术背景和营销实战经验，独创 DSS GEO 方法论，为客户提供科学、系统、可量化的生成引擎优化服务。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="glass-card rounded-xl p-4">
+                            <div class="text-3xl font-bold gradient-text">3.5+</div>
+                            <div class="text-gray-400 text-sm">年 AI 营销经验</div>
+                        </div>
+                        <div class="glass-card rounded-xl p-4">
+                            <div class="text-3xl font-bold gradient-text">PB</div>
+                            <div class="text-gray-400 text-sm">级数据处理能力</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative" data-aos="fade-left">
+                    <div class="absolute inset-0 gradient-bg rounded-3xl blur-3xl opacity-20"></div>
+                    <div class="relative glass-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">为什么选择我们？</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">专业专注</h4>
+                                    <p class="text-gray-500 text-sm">国内首批专注 GEO 领域的服务商</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">方法论领先</h4>
+                                    <p class="text-gray-500 text-sm">独创 DSS GEO 科学优化框架</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">数据驱动</h4>
+                                    <p class="text-gray-500 text-sm">7×24 小时监测，效果可量化</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">全平台覆盖</h4>
+                                    <p class="text-gray-500 text-sm">支持所有主流 AI 平台优化</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- FAQ Section -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0a1514] to-[#0a0a1a]"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">常见问题</h2>
+                <p class="text-xl text-gray-400">您可能想了解的问题</p>
+            </div>
+            
+            <div class="space-y-4" data-aos="fade-up">
+                <!-- FAQ Item 1 -->
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 flex items-center justify-between text-left faq-toggle">
+                        <span class="font-semibold">什么是 GEO（生成引擎优化）？</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-400">GEO（Generative Engine Optimization）是针对生成式 AI 平台的优化策略，旨在通过优化内容结构、语义关联和权威信源，让品牌在 AI 生成的回答中获得曝光和引用。</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 flex items-center justify-between text-left faq-toggle">
+                        <span class="font-semibold">GEO 和传统 SEO 有什么区别？</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-400">传统 SEO 针对搜索引擎排名，而 GEO 针对 AI 生成式回答。SEO 关注关键词和链接，GEO 关注语义理解、知识图谱和权威信源建设。</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 flex items-center justify-between text-left faq-toggle">
+                        <span class="font-semibold">多久能看到 GEO 优化效果？</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-400">通常需要 3-6 个月能看到明显效果。GEO 是一个长期建设过程，需要持续优化内容、建立权威信源和提升语义关联度。</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 flex items-center justify-between text-left faq-toggle">
+                        <span class="font-semibold">你们支持哪些 AI 平台？</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-400">我们支持所有主流 AI 平台，包括 ChatGPT、Claude、Perplexity、Google Bard、文心一言、通义千问等国内外主流生成式 AI。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0d1f1e]/40 to-[#0a0a1a]"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">开启您的 GEO 之旅</h2>
+                <p class="text-xl text-gray-400 mb-8">
+                    在 AI 搜索时代抢占先机，让您的品牌被看见、被信任、被选择
+                </p>
+                
+                <div class="glass-card rounded-2xl p-8 md:p-12">
+                    <div class="grid md:grid-cols-2 gap-8 mb-8 text-left">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">联系我们</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-gray-400">
+                                    <i data-lucide="mail" class="w-5 h-5 text-primary-500"></i>
+                                    <span>contact@auyologic.com</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-gray-400">
+                                    <i data-lucide="phone" class="w-5 h-5 text-primary-500"></i>
+                                    <span>400-XXX-XXXX</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-gray-400">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-primary-500"></i>
+                                    <span>中国 · 上海</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">快速咨询</h3>
+                            <form class="space-y-4">
+                                <input type="text" placeholder="您的姓名" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary-500">
+                                <input type="email" placeholder="您的邮箱" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary-500">
+                                <input type="text" placeholder="公司名称" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary-500">
+                                <button type="submit" class="w-full px-6 py-3 btn-primary rounded-lg text-white font-semibold transition-all">
+                                    提交咨询
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="assets/logo-nav.png" alt="奥呦 Logic" class="h-16 w-auto">
+                    </div>
+                    <p class="text-gray-500 max-w-md text-sm">
+                        专注 GEO 生成引擎优化，帮助企业在 AI 时代建立品牌权威，获取精准流量。让每一个提问，都给出您的品牌答案。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2 text-gray-500 text-sm">
+                        <li><a href="#home" class="hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">服务</a></li>
+                        <li><a href="#methodology" class="hover:text-white transition-colors">方法论</a></li>
+                        <li><a href="#cases" class="hover:text-white transition-colors">案例</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">关注我们</h4>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-10 h-10 glass-card rounded-full flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 glass-card rounded-full flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 glass-card rounded-full flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/5 text-center text-gray-600 text-sm">
+                <p>&copy; 2024 奥呦 Logic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Initialize AOS Animation
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Generate Stars
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 5 + 's';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            starsContainer.appendChild(star);
+        }
+        
+        // Particle System
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null };
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.color = `rgba(${139 + Math.random() * 50}, ${92 + Math.random() * 50}, ${246 + Math.random() * 50}, ${Math.random() * 0.5 + 0.2})`;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // Mouse interaction
+                if (mouse.x != null) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const force = (100 - distance) / 100;
+                        this.speedX += forceDirectionX * force * 0.02;
+                        this.speedY += forceDirectionY * force * 0.02;
+                    }
+                }
+                
+                // Boundary check
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        // Create particles
+        for (let i = 0; i < 80; i++) {
+            particles.push(new Particle());
+        }
+        
+        // Mouse tracking
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+        
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+        
+        // Animation loop
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Update and draw particles
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            // Draw connections
+            particles.forEach((a, index) => {
+                particles.slice(index + 1).forEach(b => {
+                    const dx = a.x - b.x;
+                    const dy = a.y - b.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(139, 92, 246, ${0.2 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+            
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+        
+        // Magnetic Buttons
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+        
+        // Mouse Trail Effect - Disabled for cleaner enterprise look
+        
+        // Scroll Progress Bar
+        const scrollProgress = document.getElementById('scroll-progress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+        
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-layer');
+            parallaxElements.forEach(el => {
+                const speed = el.dataset.speed || 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+        
+        // Glitch Effect Trigger
+        const glitchText = document.querySelector('.glitch');
+        if (glitchText) {
+            setInterval(() => {
+                glitchText.style.animation = 'none';
+                setTimeout(() => {
+                    glitchText.style.animation = '';
+                }, 10);
+            }, 5000);
+        }
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ Toggle
+        document.querySelectorAll('.faq-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                content.classList.toggle('hidden');
+                icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+            });
+        });
+        
+        // Counter animation with slot machine effect
+        const counters = document.querySelectorAll('.counter');
+        
+        const animateCounter = (counter) => {
+            const target = parseFloat(counter.getAttribute('data-target'));
+            const duration = 2500;
+            const startTime = performance.now();
+            
+            // Slot machine random characters
+            const chars = '0123456789';
+            
+            const updateCounter = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function (ease-out)
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const currentValue = target * easeOut;
+                
+                if (progress < 1) {
+                    // Mix between random and actual value for slot effect
+                    const displayValue = currentValue + (Math.random() - 0.5) * (1 - progress) * 2;
+                    counter.textContent = Math.max(0, displayValue).toFixed(1);
+                    
+                    // Add glow effect during animation
+                    counter.style.textShadow = `0 0 ${20 + Math.random() * 30}px rgba(139, 92, 246, ${0.5 + progress * 0.5})`;
+                    
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                    counter.style.textShadow = '0 0 40px rgba(139, 92, 246, 0.8)';
+                    
+                    // Pulse animation after completion
+                    setTimeout(() => {
+                        counter.style.animation = 'pulse 0.5s ease-in-out';
+                        setTimeout(() => {
+                            counter.style.animation = '';
+                            counter.style.textShadow = '';
+                        }, 500);
+                    }, 100);
+                }
+            };
+            
+            requestAnimationFrame(updateCounter);
+        };
+        
+        // Intersection Observer for counters
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        counters.forEach(counter => observer.observe(counter));
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
